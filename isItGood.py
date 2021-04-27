@@ -1,6 +1,6 @@
 ''''
 Is It Good? -     NDBC NOAA Buoy Output to tell us if it's good out.
-Author:  Nick Sepe
+Author:  Blenno
 License: Git The Unlicense   
 Details:  Selecting the NOAA buoy number of your choice, we search for the raw .txt file, clean it up, and spit out the data to a text file.  
 + requests does most of the work 
