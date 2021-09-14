@@ -1,19 +1,17 @@
 ''''
    ,(   ,(   ,(   ,(   ,(   ,(   ,(   ,(   -   Wave Legend - Map and Alert of Local Ocean Swells
-`-'  `-'  `-'  `-'  `-'  `-'  `-'  `-'  ` 
-   ,(   ,(   ,(   ,(   ,(   ,(   ,(   ,(   -    Using Latest NDBC NOAA Buoy Buoy Data 
+`-'  `-'  `-'  `-'  `-'  `-'  `-'  `-'  `
+   ,(   ,(   ,(   ,(   ,(   ,(   ,(   ,(   -    Using Latest NDBC NOAA Buoy Buoy Data
 `-'  `-'  `-'  `-'  `-'  `-'  `-'  `-'  `
 Details:  Selecting the NOAA buoy number of your choice, we search for the raw .txt file, clean up the data,
-make decisions on the data, and if we like the wave data we send text message with the happy data.  
-
+make decisions on the data, and if we like the wave data we send text message with the happy data.
 Requires: requests
-
 WIP:  Still building functionality and planning to add classes to scale.  maybe sqlalchemy.....
-Author:  Blenno
+Author:  Clouds Weight
 License: Git The Unlicense
-
 '''
 import requests
+from send_text import send_text as send
 
 #class Buoy(self, number):
 
@@ -28,7 +26,7 @@ def file_read(fname):
     return content_array #return our new array for data cleaning
 
 def urlReq(buoy="46224"):  # argument could is buoy number
-    buoy = buoy  
+    buoy = buoy
     url = "https://www.ndbc.noaa.gov/data/realtime2/" + buoy + ".txt"
     page = requests.get("%s" % url)  # request built url
     content = page.content  # content is the webpage
@@ -37,6 +35,16 @@ def urlReq(buoy="46224"):  # argument could is buoy number
     text_file.write("%s" % content)
     text_file.close()
     return "waveFile.txt"
+
+def decision_to_surf(total):
+    # period = int(period)
+    height = list(total)[1]
+    period = list(height)[1][1]
+    swell = float(list(height)[1][0])
+    swell_ft = swell*3
+    if swell > 1.2:
+        print(f"Surf!")
+        send(1, swell_ft, period)
 
 def clean(data):
     cleaned = []
@@ -58,15 +66,15 @@ def get_heights(clean_data):
         period.append(i[39:42])
     waves = zip(height,period)
     total = zip(time, waves)
+    return total
 
-    for i in total:
-        print(i)
 
 def main():
     file = urlReq()
     data = file_read(file)
     clean_data = clean(data)
-    get_heights(clean_data)
+    total = get_heights(clean_data)
+    decision_to_surf(total)
 
 
 if __name__ == '__main__':
