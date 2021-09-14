@@ -8,8 +8,8 @@ Try and make it OOP
 
 from twilio.rest import Client
 '''
-account_sid = "AC6b88e76ab99311def0fb9a76bc14af51"
-auth_token = "d5b6f2f9fb64da3b0a67278a7d1a3ad0"
+account_sid = ""
+auth_token = ""
 client = Client(account_sid, auth_token)
 client.messages.create(
     to="+19495219358",
