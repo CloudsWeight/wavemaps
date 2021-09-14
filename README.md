@@ -8,5 +8,5 @@ Plan to develop further.
 # imports
 twilio, requests
 
-#Requires a twilio account
+# Requires a twilio account
 Just use a free twilio auth and acct id to create a working version for yourself.  
