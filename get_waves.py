@@ -1,9 +1,17 @@
 ''''
-Is It Good? -     NDBC NOAA Buoy Output to tell us if it's good out.
+   ,(   ,(   ,(   ,(   ,(   ,(   ,(   ,(   -   Wave Legend - Map and Alert of Local Ocean Swells
+`-'  `-'  `-'  `-'  `-'  `-'  `-'  `-'  ` 
+   ,(   ,(   ,(   ,(   ,(   ,(   ,(   ,(   -    Using Latest NDBC NOAA Buoy Buoy Data 
+`-'  `-'  `-'  `-'  `-'  `-'  `-'  `-'  `
+Details:  Selecting the NOAA buoy number of your choice, we search for the raw .txt file, clean up the data,
+make decisions on the data, and if we like the wave data we send text message with the happy data.  
+
+Requires: requests
+
+WIP:  Still building functionality and planning to add classes to scale.  maybe sqlalchemy.....
 Author:  Blenno
 License: Git The Unlicense
-Details:  Selecting the NOAA buoy number of your choice, we search for the raw .txt file, clean it up, and spit out the data to a text file.
-+ requests does most of the work
+
 '''
 import requests
 
