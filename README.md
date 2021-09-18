@@ -5,13 +5,13 @@ A python script to scrape NDBC NOAA data for wave heights, wave periods, and eve
 * Working to add more functions. 
 
 # imports
-* twilio - Requires a twilio.com account for auth and acct id ( https://www.twilio.com/try-twilio )
+* twilio - Requires a twilio.com account for auth and acct id in send_( https://www.twilio.com/try-twilio )
 * requests
 
 # Usage
     * If you have git installed on your comouter just run [ git clone https://github.com/CloudsWeight/Wave_Legend ].
-    * Add your auth and acct_id to "send_text.py" section of the function.
-    * Then cd into Wave_Legend and run [ python3 run.py ] from the command line.  
+    * Edit"send_text.py" with your auth_token and account_sid values.
+    * Then cd into Wave_Legend and run the run.py file from the command line [ python3 run.py ]
 
 # Concepts
 Using information similar to this: https://www.ndbc.noaa.gov/data/realtime2/46224.txt
