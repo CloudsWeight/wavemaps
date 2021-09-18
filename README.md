@@ -5,7 +5,7 @@ A python script to scrape NDBC NOAA data for wave heights, wave periods, and eve
 * Working to add more functions. 
 
 # imports
-* twilio - Requires a twilio.com account for auth and acct id in "send_text.py" ( https://www.twilio.com/try-twilio )
+* twilio - Requires a twilio.com account for auth_token and account_sid in "send_text.py" ( https://www.twilio.com/try-twilio )
 * requests
 
 # Usage
