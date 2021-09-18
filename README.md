@@ -14,7 +14,7 @@ A python script to scrape NDBC NOAA data for wave heights, wave periods, and eve
     * Then cd into Wave_Legend and run the run.py file from the command line [ python3 run.py ]
 
 # Concepts
-Using information similar to this: https://www.ndbc.noaa.gov/data/realtime2/46224.txt
+Using data strcutrued like this: https://www.ndbc.noaa.gov/data/realtime2/46224.txt
 * Pull down messy data from a website.  
 * Clean up data and organize into relatable items.  
 * Store the state of relatable items. 
