@@ -9,9 +9,9 @@ A python script to scrape NDBC NOAA data for wave heights, wave periods, and mor
 * requests
 
 # Usage
-    * If you have git installed on your comouter just run [ git clone https://github.com/CloudsWeight/Wave_Legend ].
+    * If you have git installed, run [ git clone https://github.com/CloudsWeight/Wave_Legend ]
     * Edit"send_text.py" with your auth_token and account_sid values.
-    * Then cd into Wave_Legend and run the run.py file from the command line [ python3 run.py ]
+    * Then cd into Wave_Legend and run main.py file from the command line [ python3 run.py ]
 
 # Concepts
 Using data strcutrued like this: https://www.ndbc.noaa.gov/data/realtime2/46224.txt
