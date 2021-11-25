@@ -1,4 +1,4 @@
-# Wave Legend
+# Wave Maps
 A python script to scrape NDBC NOAA data for wave heights, wave periods, and more.  If the waves are over 3 feet you can configure the program to send a text message with the wave height/period.  
 
 * Could be convenient to run as a cron job 
