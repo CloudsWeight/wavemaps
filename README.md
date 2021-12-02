@@ -2,6 +2,8 @@
 A python script to scrape NDBC NOAA data for wave heights, wave periods, and more.  If the waves are over 3 feet you can configure the program to send a text message with the wave height/period.  
 
 * Could be convenient to run as a cron job 
+![image](https://user-images.githubusercontent.com/22231598/144370659-4d961def-1f48-400e-9d4e-16fdec80a194.png)
+
 
 # imports
 * twilio - Requires a twilio.com account for auth_token and account_sid in "send_text.py" ( https://www.twilio.com/try-twilio )
