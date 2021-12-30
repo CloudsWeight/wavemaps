@@ -4,23 +4,32 @@ import time
 import matplotlib.pyplot as plt
 
 class BuoyData:
+    ''' Use:set_buoy_n(buoy#) then set_buoy_url() to change request url.  '''
     def __init__(self):
-        self.buoy = 46224
-        self.request_buoy()
-
+        self.set_buoy_n()
+        self.set_buoy_url()
+    
+    def __str__(self):
+        return {self.buoy:self.url}
+    
     def get_time_str(self):
         #set timestamp to string to add to text files
         now = datetime.datetime.now()
         now_str = now.strftime("%d_%m_%Y_%H_%M")
         return now_str
-
-    def request_buoy(self):
+        
+    def set_buoy_n(self, n = 46224):
+        #initializes to 46224, Oceanside, CA
+        self.buoy = n
+        return n
+    
+     def set_buoy_url(self):
         # allow user to change buoy number
         buoy = str(self.buoy)
         url = "https://www.ndbc.noaa.gov/data/realtime2/" + buoy + ".txt"
         self.url = url
         return self.url
-
+        
     def get_url_content(self, url):
         page = requests.get(url)
         content = page.content
@@ -75,7 +84,7 @@ class BuoyData:
 
 
     def buoy_request(self):
-        url = self.request_buoy()
+        url = self.set_buoy_url()
         content = self.get_url_content(url)
         file_name = self.save_content_to_file(content)
         deets = self.save_file_content_to_list(file_name)
