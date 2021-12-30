@@ -6,14 +6,15 @@ import matplotlib.pyplot as plt
 class BuoyData:
     def __init__(self):
         self.buoy = 46224
+        self.request_buoy()
+
     def get_time_str(self):
         #set timestamp to string to add to text files
         now = datetime.datetime.now()
         now_str = now.strftime("%d_%m_%Y_%H_%M")
         return now_str
 
-
-    def request_buoy_url(self):
+    def request_buoy(self):
         # allow user to change buoy number
         buoy = str(self.buoy)
         url = "https://www.ndbc.noaa.gov/data/realtime2/" + buoy + ".txt"
@@ -55,48 +56,43 @@ class BuoyData:
                 i += 1
         return cleaned_data
 
-    def get_wave_data(self, cleaned_data):
-        time = []
-        height = []
-        period = []
+    def create_wave_dict(self, cleaned_data):
+        wave_data = {}
         for i in cleaned_data[2::3]:
-            time.append(i[4:16])
-            height.append(float("{:.2f}".format(float(i[33:36])*3.281)))
-            period.append(float(i[39:42]))
-            wave_data = [time, height, period]
+            wave_data[i[4:16]] = (float("{:.2f}".format(float(i[33:36])*3.281)),float("{:.2f}".format(float(i[39:42]))))
+            #height.append(float("{:.2f}".format(float(i[33:36]))*3.281))
         return wave_data
 
-    def display_wave_data(self, wave_data):
-        length = len(wave_data[0])
-        x = wave_data[0]
-        x = x[::-1]
-        y = wave_data[1]
-        y = y[::-1]
-        plt.plot(x,y)
-        #plt.subplots(constrained_layout=True)
-        plt.ylabel('Wave Height- ft')
-        plt.show()
+    def display_wave_data(self):
+        wave_data = self.buoy_request()
+        l = []
+        l.append(wave_data.items())
+        return l
+        '''        plt.plot(x,y)
+                #plt.subplots(constrained_layout=True)
+                plt.ylabel('Wave Height- ft')
+                plt.show()'''
 
-    def process_buoy_request(self):
 
-        url = self.request_buoy_url()
+    def buoy_request(self):
+        url = self.request_buoy()
         content = self.get_url_content(url)
         file_name = self.save_content_to_file(content)
         deets = self.save_file_content_to_list(file_name)
         cleaned_data = self.clean_list_data(deets)
-        waves = self.get_wave_data(cleaned_data)
-        self.display_wave_data(waves)
+        waves = self.create_wave_dict(cleaned_data)
+        #self.display_wave_data(waves)
+        return waves
 
     def show_graph(self):
-        self.process_buoy_request()
+        self.display_wave_data(self.process_buoy_request())
 
 def main():
     a = BuoyData()
-    a.process_buoy_request()
+    print(a.buoy_request())
 
 if __name__ =="__main__":
-    a = BuoyData()
-    a.show_graph()
+    main()
 
 
 '''
