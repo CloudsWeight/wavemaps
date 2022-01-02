@@ -137,11 +137,11 @@ if __name__ =="__main__":
     main()
 
 '''
-Some other working buoy numbers, becaus  not all buoy numbers work:
+Some other working buoy numbers (not all buoy #'s from link work):
     -  46268 ; Topanga Nearshore, CA
     -  44097; Block Island, RI
     -
 
-List of ndbc stations: https://www.ndbc.noaa.gov/to_station.shtml
+Link with ndbc stations: https://www.ndbc.noaa.gov/to_station.shtml
 
 '''
