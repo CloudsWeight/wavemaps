@@ -1,4 +1,4 @@
-# Wave Maps
+# Wave Maps / ndbcbuoy
 A python package to scrape NDBC NOAA data, display recent wave heights, or send a text based on pre-defined preferences.  ie.) If the waves are over 3 feet you can configure the program to send a text message with the wave height/period.  
 
 *  If you only want to check the waves, download the folder to your local computer and either import ndbcbuoy into your program or run it directly from the python shell. 
