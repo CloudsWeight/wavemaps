@@ -4,7 +4,8 @@ Creates a dictionary of swell/period for each timestamp.
 Charts recent swell and period.
 Sends a text message based on user defined paremeters.
 
-'''import requests
+'''
+import requests
 import datetime
 import time
 import matplotlib.pyplot as plt
