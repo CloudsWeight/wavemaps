@@ -3,6 +3,11 @@
 
 # ndbcbuoy.py
 A python package to scrape NDBC NOAA data, display recent wave heights, or send a text based on pre-defined preferences.  ie.) If the waves are over 3 feet you can configure the program to send a text message with the wave height/period.  
+* BuoyData() : instantiate a buoy number 
+* BuoyData.send_sms(): send a SMS based off user height preference
+* BuoyData.set_buoy(buoy#): change the buoy URL
+* BuoyData.
+
 
 # wavemaps.py
 Simple prompt to test ndbcbuoy.BuoyData functionality 
