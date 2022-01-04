@@ -6,7 +6,7 @@ A python package to scrape NDBC NOAA data, display recent wave heights, or send 
 * BuoyData() : instantiate a buoy number 
 * BuoyData.send_sms(): send a SMS based off user height preference
 * BuoyData.set_buoy(buoy#): change the buoy URL
-* BuoyData.
+* BuoyData.display_wave_data():  matplotlib chart of recent swell data
 
 
 # wavemaps.py
