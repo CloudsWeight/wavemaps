@@ -1,16 +1,10 @@
-'''
-A ndbc buoy data scraping class that:
-Creates a dictionary of swell/period for each timestamp.
-Charts recent swell and period.
-Sends a text message based on user defined paremeters.
-
-'''
 import requests
 import datetime
 import time
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from sendtext import sendtext #sendtext(height,period)
 
 class BuoyData:
     ''' Initializes to buoy#46224.  To change #, set_buoy_n(#).  To save the url, set_buoy_url() '''
@@ -27,7 +21,18 @@ class BuoyData:
     def __str__(self):
         return self.url
 
-    def set_buoy_n(self, n = '46268'):
+    def send_sms(self):
+        '''Send text based on wave_data '''
+        d = self.create_dict()
+        height = d[1][1]
+        period = d[1][2]
+        if height > 2: #adjust number to reflect wave height(ft) preference
+            return sendtext(height, period)
+        else:
+            return f"Nope.  Waves bigger than {height} in my toilet bowl!"
+
+
+    def set_buoy_n(self, n = '46224'):
         self.buoy = n
         self.set_buoy_url()
         return n
@@ -86,34 +91,37 @@ class BuoyData:
                 i += 1
         return cleaned_data
 
-    def create_wave_dict(self):
+    def check_str(self, value):
+        print(type(value))
+
+    def create_dict(self):
         cleaned_data = self.clean_list_data()
         wave_data = {}
         n = 0
-        for i in cleaned_data[2::2]:
-            wave_data[n] = [i[4:16], float("{:.2f}".format(float(i[33:36])*3.281)),float("{:.2f}".format(float(i[39:42])))]
+        for i in cleaned_data[2::2]: # i = every 2nd data item
+            wave_data[n] = [i[5:16], float("{:.2f}".format(float(i[33:36])*3.281)),float("{:.2f}".format(float(i[39:42]))),i[49:52]]
             n +=1
         return wave_data
 
     def get_dataframe(self):
-        df = pd.DataFrame(self.create_wave_dict())
+        df = pd.DataFrame(self.create_dict())
         return df
 
     def display_wave_data(self):
-        x , y1, y2 = [], [], []
+        x , y1, y2, y3 = [], [], [], []
         wave_data = self.buoy_request()
-        print(wave_data.items())
         for i in wave_data.items():
             x.append(i[1][0])
-            y1.append(i[1][1])
-            y2.append(i[1][2])
+            y1.append(i[1][1]) #swell height
+            y2.append(i[1][2]) # swell period
+            y3.append(i[1][3])# swell direction
         x.reverse()
         y1.reverse()
         y2.reverse()
+        y3.reverse()
         plt.plot(x, y1, label ='ft')
         plt.plot(x,y2, label='sec')
         plt.show()
-
 
     def save_buoy_details(self):
             deets = self.create_list_from_content()
@@ -122,7 +130,7 @@ class BuoyData:
     def buoy_request(self):
         deets = self.save_buoy_details()
         cleaned_data = self.clean_list_data()
-        waves = self.create_wave_dict()
+        waves = self.create_dict()
         #self.display_wave_data(waves)
         return waves
 
@@ -137,11 +145,12 @@ if __name__ =="__main__":
     main()
 
 '''
-Some other working buoy numbers (not all buoy #'s from link work):
+Some other working buoy numbers, becaus  not all buoy numbers work:
     -  46268 ; Topanga Nearshore, CA
     -  44097; Block Island, RI
     -
+https://www.ndbc.noaa.gov/to_station.shtml
 
-Link with ndbc stations: https://www.ndbc.noaa.gov/to_station.shtml
+list of ndbc stations
 
 '''
