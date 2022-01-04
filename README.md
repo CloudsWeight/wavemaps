@@ -4,7 +4,8 @@
 # ndbcbuoy.py
 A python package to scrape NDBC NOAA data, display recent wave heights, or send a text based on pre-defined preferences.  ie.) If the waves are over 3 feet you can configure the program to send a text message with the wave height/period.  
 
-       
+# wavemaps.py
+Simple prompt to test ndbcbuoy.BuoyData functionality 
 
 # Twilio
 * twilio - Requires a twilio.com account for auth_token and account_sid in "send_text.py" ( https://www.twilio.com/try-twilio )
