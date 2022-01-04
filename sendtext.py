@@ -1,10 +1,10 @@
 '''  Function to send text using auth and acct id fromt twilio'''
 from twilio.rest import Client
-from twiliokey import TwilioKey
+from twilio_key import TwilioKey
 
-def send_text(height, period):
-    ''' Requires a height and period variable, 
-    SMS decision is based on height.  '''
+def sendtext(height, period):
+    ''' requires a height and period variable, SMS decision
+    is based on height'''
     key = TwilioKey()
     height = float("{:.2f}".format(height))
     period = period
@@ -14,7 +14,7 @@ def send_text(height, period):
     sms_body = f"Wave Maps - Go surf! Waves are {height}ft @{period}sec \n" \
     "- <3 your friends from http://phaseassay.com"
     client.messages.create(
-        to="+", # this is the phone to receive the text
-        from_="+", # this is the twilio assigned SMS #
+        to="+19495219358",
+        from_="+15103067958",
         body= sms_body)
     return sms_body
