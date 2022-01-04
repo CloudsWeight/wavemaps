@@ -14,7 +14,7 @@ def sendtext(height, period):
     sms_body = f"Wave Maps - Go surf! Waves are {height}ft @{period}sec \n" \
     "- <3 your friends from http://phaseassay.com"
     client.messages.create(
-        to="+19495219358",
-        from_="+15103067958",
+        to="+", # phone to send SMS to
+        from_="+", # twilio account phone 
         body= sms_body)
     return sms_body
