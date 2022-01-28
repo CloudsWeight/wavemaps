@@ -17,7 +17,7 @@ Simple prompt to test ndbcbuoy.BuoyData functionality
 
 
 # Usage
-* If you have git installed, run [ git clone https://github.com/CloudsWeight/Wave-Maps ]
+* If you have git installed, run [ git clone https://github.com/CloudsWeight/wavemaps ]
 * Edit"send_text.py" with your auth_token and account_sid values.
 * Then cd into Wave-Maps and run main.py file from the command line [ python3 run.py ]
 
