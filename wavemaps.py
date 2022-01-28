@@ -19,7 +19,7 @@ from ndbcbuoy import BuoyData
 def prompt():
     ans = int(input("\n | Options are displayed below. |" \
         "\n #######################" \
-        "\n1.)Display the recent swell" \
+        "\n1.) Display the recent swell" \
         "\n2.) Send a text if it's good" \
         "\n3.) Exit" \
         "\n Enter a number: "))
