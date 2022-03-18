@@ -9,7 +9,7 @@ Replace the to and from phone numbers with your own info.
 
 To create the .exe for the file you will need to pip install "pyinstaller" ( pip3 install pyinstaller )
 
-After editing the tasker.py file with your TWILIO information, navigate to the folder with the tasker.py file from command line, then Run [ pyinstaller -onefile tasker.py ] 
+After editing the tasker.py file with your TWILIO information, navigate to the folder with the tasker.py file from command line, then Run [ pyinstaller --onefile tasker.py ] 
 
 This will create a dist folder with the tasker.exe file in it, this is your .exe file for the python script.
 
