@@ -37,7 +37,10 @@ def main():
             a.display_wave_data()
 
         elif ans == 2:
-            a.send_sms()
+            try: 
+                a.send_sms()
+            except:
+                "NEED TWILIO"
 
         elif ans == 3:
             print('Bye bye.')
