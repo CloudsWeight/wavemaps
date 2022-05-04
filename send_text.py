@@ -16,5 +16,5 @@ def sendtext(height, period):
     client.messages.create(
         to="+", # phone to send SMS to
         from_="+", # twilio account phone 
-        body= sms_body)
+        body=sms_body)
     return sms_body

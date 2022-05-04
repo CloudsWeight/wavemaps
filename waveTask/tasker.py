@@ -18,7 +18,7 @@ class TwilioKey:
     def get_auth(self):
         return self.auth_token_key
 
-def sendtext(height, period):
+def send_text(height, period):
     ''' requires a height and period variable, SMS decision
     is based on height'''
     key = TwilioKey()
@@ -33,7 +33,7 @@ def sendtext(height, period):
     client.messages.create(
         to="PHONE NUMBER TO SEND TO",
         from_="YOUR OWN TWILIO PHONE NUMBER",
-        body= sms_body)
+        body=sms_body)
     return sms_body
 
 
@@ -48,7 +48,7 @@ class BuoyData:
         self.save_content_to_file()
 
     def __repr__(self):
-        return {self.buoy:self.url}
+        return {self.buoy: self.url}
 
     def __str__(self):
         return self.url
@@ -61,7 +61,7 @@ class BuoyData:
         if height > 2: #adjust number to reflect wave height(ft) preference
             print( f"! ! ! ! ! ! \n" \
                     f"GO SURF!  Waves are {height}ft @ {period}s")
-            return sendtext(height, period)
+            return send_text(height, period)
         else:
             return f"! ! ! ! ! ! \n" \
     f"Nope, I'v seen waves bigger than {height}ft in my toilet bowl!\n\n"
@@ -134,8 +134,8 @@ class BuoyData:
         wave_data = {}
         n = 0
         for i in cleaned_data[2::2]: # i = every 2nd data item
-            wave_data[n] = [i[5:16], float("{:.2f}".format(float(i[33:36])*3.281)),float("{:.2f}".format(float(i[39:42]))),i[49:52]]
-            n +=1
+            wave_data[n] = [i[5:16], float("{:.2f}".format(float(i[33:36])*3.281)), float("{:.2f}".format(float(i[39:42]))), i[49:52]]
+            n += 1
         return wave_data
 
     def get_dataframe(self):
@@ -143,7 +143,7 @@ class BuoyData:
         return df
 
     def display_wave_data(self):
-        x , y1, y2, y3 = [], [], [], []
+        x, y1, y2, y3 = [], [], [], []
         wave_data = self.buoy_request()
         for i in wave_data.items():
             x.append(i[1][0])
@@ -154,8 +154,8 @@ class BuoyData:
         y1.reverse()
         y2.reverse()
         y3.reverse()
-        plt.plot(x, y1, label ='ft')
-        plt.plot(x,y2, label='sec')
+        plt.plot(x, y1, label='ft')
+        plt.plot(x, y2, label='sec')
         plt.show()
 
     def save_buoy_details(self):
