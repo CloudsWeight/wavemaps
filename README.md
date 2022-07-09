@@ -1,6 +1,7 @@
 ![image](https://raw.githubusercontent.com/CloudsWeight/wavemaps/main/wavemaps.png)
 ![image](https://user-images.githubusercontent.com/22231598/144370659-4d961def-1f48-400e-9d4e-16fdec80a194.png)
-![link](https://replit.com/@throwthought/GroupRep#main.py)
+
+*![live code example](https://replit.com/@throwthought/GroupRep#main.py)
 
 # ndbcbuoy.py
 A python package to scrape NDBC NOAA data, display recent wave heights, or send a text based on user preferences.  ie.) If the waves are over 3 feet you can configure the program to send a text message with the wave height/period.  
