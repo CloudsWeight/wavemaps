@@ -24,7 +24,7 @@ Simple prompt to test ndbcbuoy.BuoyData functionality
 * Then cd into Wave-Maps and run main.py file from the command line [ python3 run.py ]
 
 # Concepts
-Using data strcutrued like this: https://www.ndbc.noaa.gov/data/realtime2/46224.txt
+Using data structured like this: https://www.ndbc.noaa.gov/data/realtime2/46224.txt
 * Pull down data from a .txt  
 * Clean data using a dictionary and pandas DataFrame 
 * Run tests on clean data
