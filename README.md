@@ -3,6 +3,9 @@
 
 Example matplotlib graph: https://replit.com/@throwthought/GroupRep#main.py
 
+# deprecated 
++ unfortunately this code uses old end points and will need to be updated 
+
 # ndbcbuoy.py
 A python package to scrape NDBC NOAA data, display recent wave heights, or send a text based on user preferences.  ie.) If the waves are over 3 feet you can configure the program to send a text message with the wave height/period.  
 * BuoyData() : instantiate a buoy number 
