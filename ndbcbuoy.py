@@ -4,7 +4,7 @@ import time
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from sendtext import sendtext #sendtext(height,period)
+from send_text import send_text #sendtext(height,period)
 
 class BuoyData:
     ''' Initializes to buoy#46224.  To change #, set_buoy_n(#).  To save the url, set_buoy_url() '''
@@ -27,7 +27,7 @@ class BuoyData:
         height = d[1][1]
         period = d[1][2]
         if height > 2: #adjust number to reflect wave height(ft) preference
-            return sendtext(height, period)
+            return send_text(height, period)
         else:
             return f"Nope.  Waves bigger than {height} in my toilet bowl!"
 
@@ -99,8 +99,8 @@ class BuoyData:
         wave_data = {}
         n = 0
         for i in cleaned_data[2::2]: # i = every 2nd data item
-            wave_data[n] = [i[5:16], float("{:.2f}".format(float(i[33:36])*3.281)),float("{:.2f}".format(float(i[39:42]))),i[49:52]]
-            n +=1
+            wave_data[n] = [i[5:16], float("{:.2f}".format(float(i[33:36])*3.281)), float("{:.2f}".format(float(i[39:42]))), i[49:52]]
+            n += 1
         return wave_data
 
     def get_dataframe(self):
@@ -108,7 +108,7 @@ class BuoyData:
         return df
 
     def display_wave_data(self):
-        x , y1, y2, y3 = [], [], [], []
+        x, y1, y2, y3 = [], [], [], []
         wave_data = self.buoy_request()
         for i in wave_data.items():
             x.append(i[1][0])
@@ -119,8 +119,8 @@ class BuoyData:
         y1.reverse()
         y2.reverse()
         y3.reverse()
-        plt.plot(x, y1, label ='ft')
-        plt.plot(x,y2, label='sec')
+        plt.plot(x, y1, label='ft')
+        plt.plot(x, y2, label='sec')
         plt.show()
 
     def save_buoy_details(self):
